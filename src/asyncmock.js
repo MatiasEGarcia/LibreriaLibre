@@ -54,7 +54,7 @@ export const getBooks = (category) => {
             if (!category) {
                 resolve(books);
             } else {
-                resolve(books.filter(book => book.category.find(cate => cate = category)));
+                resolve(books.filter(book => book.category.find(cate => cate === category)));
             }
         }, 2000);
     });

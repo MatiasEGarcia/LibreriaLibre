@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import ItemList from './ItemList';
 import { getBooks } from '../asyncmock';
+import { useParams } from 'react-router-dom';
 
 function ItemListContainer() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
+  const {categoryName} = useParams();
 
   useEffect(() => {
     setLoading(true);
 
-    getBooks().then((dataBooks) => {
+    getBooks(categoryName).then((dataBooks) => {
       setBooks(dataBooks);
     }).catch(error => {
       console.log(error);
@@ -17,7 +19,7 @@ function ItemListContainer() {
       setLoading(false);
     });
 
-  },[]);
+  },[categoryName]);
 
   if (loading) {
     return (
