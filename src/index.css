@@ -1,0 +1,38 @@
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
+
+/*ItemListCOntainer component----------------------------------------*/ 
+
+.itemListContainer{
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+}
+
+/*Item component-----------------------------------------------------*/
+.listBookCard{
+    width: 15rem;
+}
+
+.listBookCard .containerImg{
+    height: 250px;
+    width: 100%;
+    margin-top: 0.2rem;
+}
+
+.listBookCard .containerImg .img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
