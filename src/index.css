@@ -36,3 +36,12 @@ code {
     width: 100%;
     object-fit: contain;
 }
+
+/*Navbar component---------------------------*/
+
+
+.navOptions{
+    width: auto;
+    display: flex;
+    justify-content: space-around;
+}
