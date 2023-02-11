@@ -1,6 +1,14 @@
-import React from 'react'
+import React, {useState} from 'react'
+import { Link } from 'react-router-dom';
+import Counter from './Counter'
 
 function ItemDetail({ id, name, img, price, description, stock, categoryList }) {
+    const[quantityAdded, setQuantityAdded] = useState(0);
+  
+    const handleAdd = (quantity) =>{
+        setQuantityAdded(quantity)
+    };
+
     return (
         <>
             <div className='card mb-3 cardContainer'>
@@ -29,6 +37,11 @@ function ItemDetail({ id, name, img, price, description, stock, categoryList }) 
                                 </li>
                                 <li className="bookStock list-group-item">
                                     <h4>Stock</h4> : {stock}
+                                </li>
+                                <li className='list-group-item'>
+                                    {quantityAdded === 0 
+                                    ? <Counter initialValue={stock} add={handleAdd}/>
+                                    : <Link to='/cart'><button className="btn btn-success">Finish buying</button></Link>}
                                 </li>
                             </ul>
                         </div>

@@ -72,3 +72,27 @@ code {
   .itemDetailContainer .bookStock h4 {
     display: inline-block;
   }
+
+  /*Counter component ----------------------------------------*/
+  .counterContainer{
+    width: 15rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .counterContainer li{
+    list-style: none;
+  }
+
+  .decrementButton i,
+  .incrementButton i {
+    font-size: 15px;
+  }
+
+  .counterContainer .order p {
+    font-size: 20px;
+  }
+
+  .counterContainer .cartButton {
+    font-size: 20px;
+  }

@@ -21,7 +21,7 @@ function ItemDetailContainer() {
         }).finally(() => {
             setLoading(false);
         });
-    },[]);
+    },[id]);
 
     useEffect(() => {
         if (book) {
