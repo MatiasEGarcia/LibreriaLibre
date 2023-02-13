@@ -1,11 +1,14 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import { Link } from 'react-router-dom';
+import CartContext from '../Context/CartContext';
 import Counter from './Counter'
 
 function ItemDetail({ id, name, img, price, description, stock, categoryList }) {
     const[quantityAdded, setQuantityAdded] = useState(0);
-  
+    const {addBook,isInCart} = useContext(CartContext);
+    
     const handleAdd = (quantity) =>{
+        addBook({id,name,price,quantity});
         setQuantityAdded(quantity)
     };
 
@@ -39,7 +42,7 @@ function ItemDetail({ id, name, img, price, description, stock, categoryList }) 
                                     <h4>Stock</h4> : {stock}
                                 </li>
                                 <li className='list-group-item'>
-                                    {quantityAdded === 0 
+                                    {quantityAdded === 0 && !isInCart(id)
                                     ? <Counter initialValue={stock} add={handleAdd}/>
                                     : <Link to='/cart'><button className="btn btn-success">Finish buying</button></Link>}
                                 </li>

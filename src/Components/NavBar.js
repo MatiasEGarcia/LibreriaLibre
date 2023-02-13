@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import CartContext from '../Context/CartContext'
 
 function NavBar() {
+
+    const {totalQuantity} = useContext(CartContext);
+
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -14,7 +19,10 @@ function NavBar() {
                 <div className="collapse navbar-collapse" id="navOptionsCollapse">
                     <ul className="navbar-nav navOptions">
                         <li className="nav-item">
-                            <Link className="nav-link" >Link</Link>
+                            <Link to="/cart" className="nav-link">
+                                <i class="bi bi-cart"></i>
+                                {totalQuantity}
+                            </Link>
                         </li>
                         <li className="nav-item dropdown">
                             <Link className="nav-link dropdown-toggle" href="#" id="dropdownGenders" role="button" data-bs-toggle="dropdown" aria-expanded="false">

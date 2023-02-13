@@ -1,4 +1,4 @@
-const books = [
+var books = [
     {
         id: '1',
         name: 'Harry Potter y la piedra filosofal',
@@ -45,6 +45,7 @@ const books = [
         description: 'Ambientada en el turbulento ambiente religioso del siglo XIV, la novela narra la investigación que realizan fray Guillermo de Baskerville y su pupilo Adso de Melk alrededor de una misteriosa serie de crímenes que suceden en una abadía del norte de Italia.'
     }
 ]
+var purchaseId = 0;
 
 //With timeout will simulate a backend response
 
@@ -67,3 +68,34 @@ export const getBookById = (id) => {
         },2000);
     });
 };
+
+//For now I won't save anything but the purchase id, id I add a database in the future then I will save the buyer data
+export const buyBooks = (objCreate) => {
+    const outOfStock = [];
+    
+    return new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            objCreate.cart.forEach(cartBook =>{
+                let dataBook = books.filter(dataBook => dataBook.id === cartBook.id);
+                if(dataBook.stock < cartBook.quantity){
+                    outOfStock.push(dataBook);
+                }else{
+                    setBookNewStock(cartBook);
+                };    
+            });
+            if(outOfStock !== 0) return reject({type : 'outOfStock', outOfStock});
+            purchaseId++;
+            resolve(purchaseId);
+        },2000);
+    }); 
+}
+
+const setBookNewStock = (cartBook) => {
+    books = books.map(book => {
+        let returnBook = {...book};
+        if(returnBook.id === cartBook.id){
+            returnBook.stock -= cartBook.quantity;
+        }
+        return returnBook;
+    });
+}

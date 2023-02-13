@@ -29,7 +29,7 @@ function ItemListContainer() {
 
   return (
     <div className='container itemListContainer'>
-      {books.length > 0 ? <ItemList books={books}/> : <h2>There are not books</h2>}
+      {books.length > 0 ? <ItemList books={books} item="item"/> : <h2>There are not books</h2>}
     </div>
   )
 }
