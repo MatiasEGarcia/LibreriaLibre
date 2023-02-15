@@ -32,7 +32,7 @@ function Counter({ initialValue, add }) {
             <li>
             <button type='button'
                     className='cartButton btn btn-success'
-                    onClick={() => add(quantity)}><i class="bi bi-bag-check"></i></button>
+                    onClick={() => add(quantity)}><i className="bi bi-bag-check"></i></button>
             </li>
         </ul>
     )

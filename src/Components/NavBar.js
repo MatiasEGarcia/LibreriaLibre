@@ -20,7 +20,7 @@ function NavBar() {
                     <ul className="navbar-nav navOptions">
                         <li className="nav-item">
                             <Link to="/cart" className="nav-link">
-                                <i class="bi bi-cart"></i>
+                                <i className="bi bi-cart"></i>
                                 {totalQuantity}
                             </Link>
                         </li>
