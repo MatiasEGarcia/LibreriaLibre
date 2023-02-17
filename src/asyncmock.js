@@ -83,7 +83,7 @@ export const buyBooks = (objCreate) => {
                     setBookNewStock(cartBook);
                 };    
             });
-            if(outOfStock !== 0) return reject({type : 'outOfStock', outOfStock});
+            if(outOfStock.length !== 0) return reject({type : 'outOfStock', outOfStock});
             purchaseId++;
             resolve(purchaseId);
         },2000);

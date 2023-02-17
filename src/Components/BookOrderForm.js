@@ -6,12 +6,12 @@ function BookOrderForm({formSubmit}) {
 
     const formik = useFormik({
         initialValues: {
-            name: 'Carlitos',
-            surname: 'Perez',
+            name: '',
+            surname: '',
             tel: '1125968540',
             email: 'ejemplo@email.com',
-            address: 'moreno 42',
-            confirmAddress: ' '
+            address: '',
+            confirmAddress: ''
         },
         validationSchema: basicSchema,
         onSubmit: (evt) => {

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import BookOrderForm from './BookOrderForm';
 import { useModal } from '../hooks/useModal';
 import Modal from './Modal';
+import { buyBooks } from '../asyncmock';
 
 function CartListContainer() {
     const [loading, setLoading] = useState(false);
@@ -12,11 +13,36 @@ function CartListContainer() {
     const { isOpen, openModal, closeModal } = useModal(false);
 
     const OrderSubmit = (evt) => {
-        evt.preventDefault();
-        console.log("Formulario enviado");
-        closeModal();
+        //I think that I dont need prevent default thanks to formik
+        setLoading(true);
+
+        const objCreate = {
+            buyer:{
+                name : evt.name.value,
+                surname: evt.surname.value,
+                tel: evt.tel.value,
+                email:evt.email.value,
+                address:evt.address.value
+            },
+            cart,
+            totalAmount
+        }
+
+        buyBooks(objCreate).then((id) => {
+            clearCart();
+            console.log(`Su id de compra es ${id}`);
+        }).catch((error) => {
+            if(error.type === 'outOfStock')
+            console.log(`Hay libros que no tienen stock`);
+        }).finally(() => {
+            setLoading(false);
+            closeModal();
+        })
     }
 
+    if (loading) {
+        return (<h2>Loading ...</h2>)
+    };
 
     if (!cart.length) {
         return (
