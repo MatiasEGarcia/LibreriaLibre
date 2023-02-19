@@ -2,6 +2,7 @@ import React, {useContext, useState} from 'react'
 import { Link } from 'react-router-dom';
 import CartContext from '../Context/CartContext';
 import Counter from './Counter'
+import { toast } from 'react-hot-toast';
 
 function ItemDetail({ id, name, img, price, description, stock, categoryList }) {
     const[quantityAdded, setQuantityAdded] = useState(0);
@@ -10,6 +11,10 @@ function ItemDetail({ id, name, img, price, description, stock, categoryList }) 
     const handleAdd = (quantity) =>{
         addBook({id,name,price,quantity});
         setQuantityAdded(quantity)
+        toast.success('Successfully added to cart',{
+            duration: 3000,
+            position: 'top-center',
+        });
     };
 
     return (

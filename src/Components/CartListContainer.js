@@ -6,6 +6,7 @@ import BookOrderForm from './BookOrderForm';
 import { useModal } from '../hooks/useModal';
 import Modal from './Modal';
 import { buyBooks } from '../asyncmock';
+import { toast } from 'react-hot-toast';
 
 function CartListContainer() {
     const [loading, setLoading] = useState(false);
@@ -30,10 +31,17 @@ function CartListContainer() {
 
         buyBooks(objCreate).then((id) => {
             clearCart();
-            console.log(`Su id de compra es ${id}`);
+            toast.success(`Purchase made, your purchase ID is ${id}`,{
+                duration: 3000,
+                position: 'top-center',
+            });
         }).catch((error) => {
-            if(error.type === 'outOfStock')
-            console.log(`Hay libros que no tienen stock`);
+            if(error.type === 'outOfStock'){
+                toast.error("Some books are out of stock",{
+                    duration: 3000,
+                    position: 'top-center',
+                });
+            }
         }).finally(() => {
             setLoading(false);
             closeModal();

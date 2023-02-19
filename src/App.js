@@ -4,6 +4,7 @@ import ItemDetailContainer from "./Components/ItemDetailContainer";
 import NavBar from "./Components/NavBar";
 import { CartProvider } from "./Context/CartContext";
 import CartListContainer from "./Components/CartListContainer";
+import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Route path="/book/:id" element={<ItemDetailContainer />} />
             <Route path="/cart" element={<CartListContainer />} />
           </Routes>
+          <Toaster/>
         </BrowserRouter>
       </CartProvider>
     </div>

@@ -64,7 +64,12 @@ export const getBooks = (category) => {
 export const getBookById = (id) => {
     return new Promise ((resolve,reject) =>{
         setTimeout(() => {
-            resolve(books.find(book => book.id === id));
+            let book = books.find(book => book.id === id);
+            if(book){
+                resolve(book);
+            }else{
+                reject(`Book with id = ${id} not found`);
+            }
         },2000);
     });
 };
