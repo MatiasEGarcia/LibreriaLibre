@@ -7,11 +7,16 @@ import { useModal } from '../hooks/useModal';
 import Modal from './Modal';
 import { buyBooks } from '../asyncmock';
 import { toast } from 'react-hot-toast';
+import Loading from '../Animations/Loading.json';
+import Lottie from "lottie-react";
 
 function CartListContainer() {
     const [loading, setLoading] = useState(false);
     const { cart, totalAmount, clearCart } = useContext(CartContext);
     const { isOpen, openModal, closeModal } = useModal(false);
+    const loadingStyle = {
+        height: 300
+    }
 
     const OrderSubmit = (evt) => {
         //I think that I dont need prevent default thanks to formik
@@ -49,7 +54,7 @@ function CartListContainer() {
     }
 
     if (loading) {
-        return (<h2>Loading ...</h2>)
+        return (<h2><Lottie animationData={Loading} style={loadingStyle}/></h2>)
     };
 
     if (!cart.length) {

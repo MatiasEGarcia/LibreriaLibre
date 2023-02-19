@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { getBookById } from '../asyncmock';
 import { Link } from 'react-router-dom';
 import ItemDetail from './ItemDetail';
+import Loading from '../Animations/Loading.json';
+import Lottie from "lottie-react";
 
 function ItemDetailContainer() {
     const [book, setBook] = useState();
@@ -10,6 +12,9 @@ function ItemDetailContainer() {
     const [loading, setLoading] = useState(true);
     const [categoryList, setCategoryList] = useState();
     const { id } = useParams();
+    const loadingStyle = {
+        height: 300
+    }
 
     useEffect(() => {
         getBookById(id).then((bookData) => {
@@ -41,7 +46,7 @@ function ItemDetailContainer() {
     }, [book])
 
     if (loading) {
-        return (<h2>Loading ...</h2>)
+        return (<Lottie animationData={Loading} style={loadingStyle}/>)
     };
 
     if (noBook.errorMessage) {

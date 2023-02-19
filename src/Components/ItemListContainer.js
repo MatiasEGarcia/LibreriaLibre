@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react';
 import ItemList from './ItemList';
 import { getBooks } from '../asyncmock';
 import { useParams } from 'react-router-dom';
+import Loading from '../Animations/Loading.json';
+import Lottie from "lottie-react";
 
 function ItemListContainer() {
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const {categoryName} = useParams();
+  const loadingStyle = {
+    height: 300
+}
 
   useEffect(() => {
     setLoading(true);
@@ -23,7 +28,7 @@ function ItemListContainer() {
 
   if (loading) {
     return (
-      <h2>Loading ...</h2>
+      <h2><Lottie animationData={Loading} style={loadingStyle}/></h2>
     )
   }
 
