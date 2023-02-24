@@ -139,13 +139,11 @@ code {
 
 .modalContainer {
   position: relative;
-  min-width: 50rem;
-  max-width: 50rem;
+  min-width: 30rem;
   max-height: 40rem;
   background-color: #fff;
   padding: 0.5rem;
-  border-radius: 1%;
-  overflow-y: auto;
+  border-radius: 5%;
   
 }
 
