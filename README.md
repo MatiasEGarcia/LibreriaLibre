@@ -26,3 +26,9 @@ Methods you can use:
 - getBookById (find and get a book by id)
 - buyBooks (simulate a purchase and send an identification of the purchase)
 - setBookNewStock (change the stock of each book)
+---
+How to use?
+
+    - Git clone
+    - Update Dependencies (if it needed)
+    - npm Start
